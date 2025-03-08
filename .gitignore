@@ -1,0 +1,41 @@
+# System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editor directories and files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Node modules and logs (in case you decide to add npm packages later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# AWS temporary files
+aws/credentials
+aws/*.pem
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build files
+dist/
+build/
+out/
+
+# Logs
+logs
+*.log
+
+# Temporary files
+tmp/
+temp/ 

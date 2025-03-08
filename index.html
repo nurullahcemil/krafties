@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My iPhone Apps</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My iPhone Apps</h1>
+            <nav>
+                <ul>
+                    <li><a href="#apps">Apps</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <h2>Creating Amazing iOS Experiences</h2>
+            <p>Discover my collection of thoughtfully designed iPhone applications</p>
+        </div>
+    </section>
+
+    <section id="apps">
+        <div class="container">
+            <h2>Featured Apps</h2>
+            <div class="app-grid">
+                <!-- App 1 -->
+                <div class="app-card">
+                    <div class="app-icon">
+                        <img src="images/app1.png" alt="App 1 Icon">
+                    </div>
+                    <div class="app-info">
+                        <h3>App Name 1</h3>
+                        <p>Short description of what this app does and why users will love it.</p>
+                        <div class="app-meta">
+                            <span><i class="fas fa-star"></i> 4.8</span>
+                            <span><i class="fas fa-download"></i> 10K+</span>
+                        </div>
+                        <a href="https://apps.apple.com/app/id123456789" class="app-store-btn">
+                            <i class="fab fa-app-store-ios"></i> Download on App Store
+                        </a>
+                    </div>
+                </div>
+
+                <!-- App 2 -->
+                <div class="app-card">
+                    <div class="app-icon">
+                        <img src="images/app2.png" alt="App 2 Icon">
+                    </div>
+                    <div class="app-info">
+                        <h3>App Name 2</h3>
+                        <p>Short description of what this app does and why users will love it.</p>
+                        <div class="app-meta">
+                            <span><i class="fas fa-star"></i> 4.9</span>
+                            <span><i class="fas fa-download"></i> 50K+</span>
+                        </div>
+                        <a href="https://apps.apple.com/app/id987654321" class="app-store-btn">
+                            <i class="fab fa-app-store-ios"></i> Download on App Store
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Add more app cards as needed -->
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <p>I'm an iOS developer passionate about creating intuitive and beautiful applications for iPhone users. With a focus on user experience and clean design, my apps aim to solve real-world problems while being enjoyable to use.</p>
+            <p>My development philosophy centers around:</p>
+            <ul>
+                <li>Intuitive user interfaces</li>
+                <li>Performance optimization</li>
+                <li>Regular updates based on user feedback</li>
+                <li>Privacy-focused design</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>Have questions or feedback about my apps? I'd love to hear from you!</p>
+            <!-- Formspree form - replace YOUR_FORM_ID with your actual Formspree form ID -->
+            <form id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <!-- Optional hidden fields for custom data -->
+                <input type="hidden" name="_subject" value="New contact from iPhone Apps website">
+                <input type="hidden" name="_next" value="https://yourusername.github.io/thank-you.html">
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 My iPhone Apps. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 

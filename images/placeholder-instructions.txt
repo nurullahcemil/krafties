@@ -1,0 +1,18 @@
+App Icon Placeholder Instructions
+
+This directory should contain your iPhone app icons. For best results:
+
+1. Use PNG format with transparency
+2. Recommended size: 1024x1024 pixels (will be displayed smaller on the website)
+3. Follow Apple's icon design guidelines:
+   - Simple, recognizable design
+   - Avoid transparency in the actual icon design
+   - Use a square icon with rounded corners (the website styling will add the iOS-style rounding)
+
+For placeholder purposes, you should add:
+- app1.png
+- app2.png
+
+You can create these using any image editing software like Photoshop, Sketch, Figma, or even use free tools like Canva.
+
+When ready to launch your site, replace these placeholders with your actual app icons. 
