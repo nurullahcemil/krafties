@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | My iPhone Apps</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Page Not Found | Krafties</title>
+    <link rel="stylesheet" href="css/modern-styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .error-section {
             text-align: center;
-            padding: 8rem 0;
+            padding: var(--space-xxxl) 0;
             min-height: 60vh;
             display: flex;
             flex-direction: column;
@@ -17,26 +17,29 @@
         }
         
         .error-section h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+            font-size: 6rem;
+            margin-bottom: var(--space-md);
             color: var(--primary-color);
+            line-height: 1;
         }
         
         .error-section h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.5rem;
+            margin-bottom: var(--space-lg);
+            color: var(--dark-color);
         }
         
         .error-section p {
             font-size: 1.2rem;
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto var(--space-xl);
+            color: var(--gray-700);
         }
         
         .error-section .icon {
             font-size: 6rem;
             color: var(--primary-color);
-            margin-bottom: 2rem;
+            margin-bottom: var(--space-xl);
             opacity: 0.7;
         }
         
@@ -44,25 +47,30 @@
             display: inline-block;
             background-color: var(--primary-color);
             color: white;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--radius-pill);
             text-decoration: none;
             font-weight: 500;
-            transition: background-color 0.3s;
-            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
         }
         
         .home-btn:hover {
-            background-color: #0062cc;
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            text-decoration: none;
+            color: white;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>My iPhone Apps</h1>
+            <h1>Krafties</h1>
             <nav>
                 <ul>
+                    <li><a href="index.html#design-philosophy">Our Philosophy</a></li>
                     <li><a href="index.html#apps">Apps</a></li>
                     <li><a href="index.html#about">About</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
@@ -86,7 +94,7 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2023 My iPhone Apps. All rights reserved.</p>
+                <p>&copy; 2024 Krafties. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="privacy-policy.html">Privacy Policy</a>
                     <a href="terms-of-service.html">Terms of Service</a>
@@ -106,7 +114,7 @@
             const copyrightYear = document.querySelector('footer p');
             if (copyrightYear) {
                 const year = new Date().getFullYear();
-                copyrightYear.textContent = copyrightYear.textContent.replace('2023', year);
+                copyrightYear.textContent = copyrightYear.textContent.replace('2024', year);
             }
         });
     </script>
