@@ -285,6 +285,30 @@ footer .container {
     align-items: center;
 }
 
+.footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
 .social-links {
     display: flex;
     gap: 1rem;
@@ -318,12 +342,13 @@ footer .container {
         grid-template-columns: 1fr;
     }
     
-    footer .container {
+    .footer-content {
         flex-direction: column;
         text-align: center;
+        gap: 1rem;
     }
     
-    .social-links {
-        margin-top: 1rem;
+    .footer-links, .social-links {
+        margin-top: 0.5rem;
     }
 } 
