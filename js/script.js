@@ -264,13 +264,25 @@ document.addEventListener('DOMContentLoaded', function() {
         
         toggleBtn.addEventListener('click', () => {
             if (isDarkMode) {
-                // Switch to light mode
+                // Switch to light mode with improved contrast
                 document.documentElement.style.setProperty('--bg-color', '#ffffff');
-                document.documentElement.style.setProperty('--bg-color-light', '#f5f5f5');
+                document.documentElement.style.setProperty('--bg-color-light', '#f8f9fa');
                 document.documentElement.style.setProperty('--bg-color-lighter', '#e9ecef');
-                document.documentElement.style.setProperty('--text-color', '#212529');
-                document.documentElement.style.setProperty('--text-color-muted', '#6c757d');
+                document.documentElement.style.setProperty('--text-color', '#121212');  // Darker text for better contrast
+                document.documentElement.style.setProperty('--text-color-muted', '#495057'); // Darker muted text
                 toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+                toggleBtn.style.background = 'var(--secondary-color)';
+                
+                // Update styles for better contrast in light mode
+                document.querySelectorAll('h2:after').forEach(el => {
+                    el.style.backgroundColor = 'var(--secondary-color)';
+                });
+                
+                // Make cards stand out more in light mode
+                document.querySelectorAll('.philosophy-item, .app-card').forEach(el => {
+                    el.style.boxShadow = '0 8px 30px rgba(0, 0, 0, 0.12)';
+                    el.style.border = '1px solid #dee2e6';
+                });
             } else {
                 // Switch to dark mode
                 document.documentElement.style.setProperty('--bg-color', '#121212');
@@ -279,10 +291,96 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.documentElement.style.setProperty('--text-color', '#f5f5f5');
                 document.documentElement.style.setProperty('--text-color-muted', '#aaaaaa');
                 toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+                toggleBtn.style.background = 'var(--primary-color)';
+                
+                // Reset styles
+                document.querySelectorAll('h2:after').forEach(el => {
+                    el.style.backgroundColor = '';
+                });
+                
+                document.querySelectorAll('.philosophy-item, .app-card').forEach(el => {
+                    el.style.boxShadow = '';
+                    el.style.border = '';
+                });
             }
             isDarkMode = !isDarkMode;
         });
     };
     
+    // Apply fun Tilt effect to cards
+    const applyTiltEffect = () => {
+        const cards = document.querySelectorAll('.philosophy-item, .app-card');
+        
+        cards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                const cardRect = card.getBoundingClientRect();
+                const cardCenterX = cardRect.left + cardRect.width / 2;
+                const cardCenterY = cardRect.top + cardRect.height / 2;
+                
+                const mouseX = e.clientX;
+                const mouseY = e.clientY;
+                
+                // Calculate the percentage offset from center
+                const offsetX = (mouseX - cardCenterX) / (cardRect.width / 2);
+                const offsetY = (mouseY - cardCenterY) / (cardRect.height / 2);
+                
+                // Apply tilt with limitations
+                const maxTilt = 10; // maximum tilt in degrees
+                const tiltX = -offsetY * maxTilt; // inverted for natural feel
+                const tiltY = offsetX * maxTilt;
+                
+                card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.02)`;
+                card.style.transition = 'none';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
+                card.style.transition = 'transform 0.5s ease';
+            });
+        });
+    };
+    
     createDarkModeToggle();
+    applyTiltEffect();
+    
+    // Ensure all elements are properly initialized
+    document.querySelectorAll('.philosophy-item, .app-card').forEach(el => {
+        // Force opacity to be visible 
+        el.style.opacity = '1';
+    });
+    
+    // Fix any timing issues with animations by forcing a small delay
+    setTimeout(() => {
+        document.querySelectorAll('.fade-in').forEach(el => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        });
+    }, 300);
+
+    // Philosophy Accordion functionality
+    const accordionItems = document.querySelectorAll('.accordion-item');
+    
+    if (accordionItems.length > 0) {
+        // Open the first accordion item by default
+        accordionItems[0].classList.add('active');
+        
+        accordionItems.forEach(item => {
+            const header = item.querySelector('.accordion-header');
+            
+            header.addEventListener('click', () => {
+                // Toggle the clicked item
+                const isActive = item.classList.contains('active');
+                
+                // Optional: Close all accordion items first (comment out for multiple open items)
+                accordionItems.forEach(accItem => {
+                    accItem.classList.remove('active');
+                });
+                
+                // If the clicked item wasn't active, open it
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    }
 }); 

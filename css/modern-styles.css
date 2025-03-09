@@ -90,6 +90,7 @@ h2 {
   font-size: 2.5rem;
   margin-bottom: var(--space-xl);
   position: relative;
+  overflow: hidden;
 }
 
 h2:after {
@@ -106,6 +107,23 @@ h2:after {
 .text-center h2:after {
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Additional hover animation for h2 */
+h2:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--secondary-color);
+  transition: width 0.8s ease;
+  z-index: 1;
+}
+
+h2:hover:before {
+  width: 80px;
 }
 
 h3 {
@@ -190,11 +208,23 @@ nav a {
   letter-spacing: 0.08em;
   font-size: 0.9rem;
   border-bottom: none;
+  position: relative;
 }
 
-nav a:hover {
-  color: var(--primary-light);
-  transform: translateY(-2px);
+nav a:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-light);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav a:hover:after {
+  width: 100%;
+  left: 0;
 }
 
 /* Hero Section */
@@ -242,14 +272,36 @@ nav a:hover {
   background-color: var(--bg-color-lighter);
   padding: var(--space-xl);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: grab;
+  position: relative;
+  z-index: 1;
+  overflow: visible;
 }
 
 .philosophy-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 10px 10px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+.philosophy-item:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(109, 93, 252, 0.05) 0%, rgba(255, 125, 92, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.philosophy-item:hover:after {
+  opacity: 1;
 }
 
 .philosophy-item h3 {
@@ -263,6 +315,74 @@ nav a:hover {
 .philosophy-item i {
   margin-right: var(--space-sm);
   font-size: 1.25rem;
+}
+
+/* Philosophy Accordion */
+.philosophy-accordion {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.accordion-item {
+  background-color: var(--bg-color-light);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--gray-800);
+  transition: all 0.3s ease;
+}
+
+.accordion-item:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.accordion-header {
+  padding: var(--space-md) var(--space-lg);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  user-select: none;
+}
+
+.accordion-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+}
+
+.accordion-header h3 i {
+  margin-right: var(--space-sm);
+  color: var(--primary-light);
+  font-size: 1.2rem;
+  min-width: 1.5rem;
+  text-align: center;
+}
+
+.toggle-icon {
+  color: var(--primary-light);
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.accordion-item.active .toggle-icon {
+  transform: rotate(180deg);
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 var(--space-lg);
+  transition: all 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 500px;
+  padding: 0 var(--space-lg) var(--space-lg);
 }
 
 /* App Section */
@@ -285,16 +405,37 @@ nav a:hover {
 .app-card {
   background-color: var(--bg-color-lighter);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.3);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   position: relative;
   cursor: grab;
+  z-index: 1;
+  overflow: visible;
 }
 
 .app-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 10px 10px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+.app-card:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(109, 93, 252, 0.05) 0%, rgba(255, 125, 92, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.app-card:hover:after {
+  opacity: 1;
 }
 
 .app-info {
@@ -332,14 +473,32 @@ nav a:hover {
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-pill);
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   border: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.app-store-btn:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.app-store-btn:hover:after {
+  left: 100%;
 }
 
 .app-store-btn:hover {
-  background-color: var(--primary-dark);
-  color: white;
-  border: none;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
 /* About Section */
@@ -395,17 +554,19 @@ nav a:hover {
   width: 100%;
   padding: var(--space-md);
   border-radius: var(--radius-md);
-  border: 1px solid var(--bg-color-lighter);
+  border: 2px solid transparent;
   background-color: var(--bg-color-lighter);
   color: var(--text-color);
   font-family: 'Source Sans Pro', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: var(--primary-color);
-  background-color: var(--bg-color-light);
+  border-color: var(--primary-light);
+  box-shadow: 0 0 0 4px rgba(109, 93, 252, 0.1);
+  background-color: rgba(109, 93, 252, 0.05);
 }
 
 .btn {
@@ -417,13 +578,32 @@ nav a:hover {
   border-radius: var(--radius-pill);
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   font-family: 'Source Sans Pro', sans-serif;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.btn:hover:after {
+  left: 100%;
 }
 
 .btn:hover {
-  background-color: var(--primary-dark);
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
 }
 
 /* Content Pages */
@@ -552,6 +732,22 @@ footer {
   .philosophy-grid {
     grid-template-columns: 1fr;
   }
+  
+  .accordion-header {
+    padding: var(--space-md);
+  }
+  
+  .accordion-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .accordion-content {
+    padding: 0 var(--space-md);
+  }
+  
+  .accordion-item.active .accordion-content {
+    padding: 0 var(--space-md) var(--space-md);
+  }
 }
 
 /* Utility Classes */
@@ -576,6 +772,9 @@ footer {
 /* Animation Classes */
 .fade-in {
   animation: fadeIn 1s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: opacity, transform;
 }
 
 @keyframes fadeIn {
@@ -586,17 +785,144 @@ footer {
 /* Interactive Elements */
 .draggable {
   cursor: grab;
+  transform: translate(0, 0);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
 }
 
 .draggable:active {
   cursor: grabbing;
+  transition: none;
 }
 
 /* Hover Effects */
 .hover-grow {
-  transition: transform 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: transform;
 }
 
 .hover-grow:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
+}
+
+/* Tilt effect */
+.philosophy-item, .app-card {
+  transform-style: preserve-3d;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+/* Card styling enhancement */
+.philosophy-item, .app-card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4), 0 1px 3px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  overflow: visible;
+}
+
+.philosophy-item:hover, .app-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 10px 10px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+.philosophy-item:after, .app-card:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(109, 93, 252, 0.05) 0%, rgba(255, 125, 92, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.philosophy-item:hover:after, .app-card:hover:after {
+  opacity: 1;
+}
+
+/* Additional animation for headings */
+h2:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: var(--secondary-color);
+  transition: width 0.8s ease;
+  z-index: 1;
+}
+
+h2:hover:before {
+  width: 80px;
+}
+
+/* Improve buttons */
+.btn, .app-store-btn {
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn:after, .app-store-btn:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 100%);
+  transition: left 0.5s ease;
+  z-index: -1;
+}
+
+.btn:hover:after, .app-store-btn:hover:after {
+  left: 100%;
+}
+
+.btn:hover, .app-store-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Navigation animations */
+nav a:after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-light);
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+nav a:hover:after {
+  width: 100%;
+  left: 0;
+}
+
+/* Apply default cursors back to interactive elements */
+a, button, .btn, .app-store-btn {
+  cursor: pointer;
+}
+
+.app-card, .philosophy-item {
+  cursor: default;
+}
+
+input, textarea {
+  cursor: text;
+}
+
+/* Clean up unused styles */
+.custom-cursor, .cursor-highlight, .cursor-trail {
+  display: none;
 } 
