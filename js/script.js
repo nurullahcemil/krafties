@@ -114,4 +114,175 @@ document.addEventListener('DOMContentLoaded', function() {
         const year = new Date().getFullYear();
         copyrightYear.textContent = copyrightYear.textContent.replace('2023', year);
     }
+
+    // Add fade-in animations to elements as they scroll into view
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Apply animations to these elements
+    const animatedElements = document.querySelectorAll('.philosophy-item, .app-card, h2, #hero h2, #hero p');
+    animatedElements.forEach(el => {
+        el.style.opacity = '0';
+        observer.observe(el);
+    });
+
+    // Make philosophy items and app cards draggable
+    const makeElementDraggable = (element) => {
+        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        let isDragging = false;
+        let initialX, initialY;
+        let transformX = 0, transformY = 0;
+        let initialTransform = window.getComputedStyle(element).transform;
+        
+        // If the element already has a transform, extract the current X and Y values
+        if (initialTransform !== 'none') {
+            const matrix = initialTransform.match(/matrix.*\((.+)\)/)[1].split(', ');
+            if (matrix.length >= 6) {
+                transformX = parseFloat(matrix[4]);
+                transformY = parseFloat(matrix[5]);
+            }
+        }
+
+        element.classList.add('draggable');
+        
+        element.onmousedown = dragMouseDown;
+        
+        function dragMouseDown(e) {
+            e.preventDefault();
+            // Get the mouse cursor position at startup
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            initialX = e.clientX;
+            initialY = e.clientY;
+            
+            document.onmouseup = closeDragElement;
+            // Call a function whenever the cursor moves
+            document.onmousemove = elementDrag;
+            
+            isDragging = true;
+            element.style.zIndex = '1000';
+            element.style.cursor = 'grabbing';
+        }
+
+        function elementDrag(e) {
+            e.preventDefault();
+            // Calculate the new cursor position
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            
+            // Set the element's new position
+            transformX = transformX - pos1;
+            transformY = transformY - pos2;
+            element.style.transform = `translate(${transformX}px, ${transformY}px)`;
+        }
+
+        function closeDragElement() {
+            // Stop moving when mouse button is released
+            document.onmouseup = null;
+            document.onmousemove = null;
+            
+            // If it was just a click (not a drag), reset position
+            if (isDragging && Math.abs(initialX - pos3) < 5 && Math.abs(initialY - pos4) < 5) {
+                element.style.transform = 'translate(0, 0)';
+                transformX = 0;
+                transformY = 0;
+            }
+            
+            isDragging = false;
+            element.style.zIndex = '';
+            element.style.cursor = 'grab';
+            
+            // If dragged far, animate back to original position
+            if (Math.abs(transformX) > 150 || Math.abs(transformY) > 150) {
+                element.style.transition = 'transform 0.5s ease-in-out';
+                element.style.transform = 'translate(0, 0)';
+                transformX = 0;
+                transformY = 0;
+                
+                // Reset the transition after it's complete
+                setTimeout(() => {
+                    element.style.transition = '';
+                }, 500);
+            }
+        }
+    };
+
+    // Apply draggable functionality
+    document.querySelectorAll('.philosophy-item, .app-card').forEach(el => {
+        makeElementDraggable(el);
+    });
+
+    // Dark mode toggle
+    const createDarkModeToggle = () => {
+        const toggleBtn = document.createElement('button');
+        toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        toggleBtn.className = 'dark-mode-toggle';
+        toggleBtn.style.position = 'fixed';
+        toggleBtn.style.bottom = '20px';
+        toggleBtn.style.right = '20px';
+        toggleBtn.style.zIndex = '1000';
+        toggleBtn.style.background = 'var(--primary-color)';
+        toggleBtn.style.color = 'white';
+        toggleBtn.style.border = 'none';
+        toggleBtn.style.borderRadius = '50%';
+        toggleBtn.style.width = '50px';
+        toggleBtn.style.height = '50px';
+        toggleBtn.style.cursor = 'pointer';
+        toggleBtn.style.boxShadow = 'var(--shadow-md)';
+        toggleBtn.style.display = 'flex';
+        toggleBtn.style.alignItems = 'center';
+        toggleBtn.style.justifyContent = 'center';
+        toggleBtn.style.fontSize = '1.2rem';
+        toggleBtn.style.transition = 'all 0.3s ease';
+        
+        toggleBtn.addEventListener('mouseenter', () => {
+            toggleBtn.style.transform = 'scale(1.1)';
+        });
+        
+        toggleBtn.addEventListener('mouseleave', () => {
+            toggleBtn.style.transform = 'scale(1)';
+        });
+        
+        document.body.appendChild(toggleBtn);
+        
+        // We're already in dark mode, so clicking toggles to light mode
+        let isDarkMode = true;
+        
+        toggleBtn.addEventListener('click', () => {
+            if (isDarkMode) {
+                // Switch to light mode
+                document.documentElement.style.setProperty('--bg-color', '#ffffff');
+                document.documentElement.style.setProperty('--bg-color-light', '#f5f5f5');
+                document.documentElement.style.setProperty('--bg-color-lighter', '#e9ecef');
+                document.documentElement.style.setProperty('--text-color', '#212529');
+                document.documentElement.style.setProperty('--text-color-muted', '#6c757d');
+                toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                // Switch to dark mode
+                document.documentElement.style.setProperty('--bg-color', '#121212');
+                document.documentElement.style.setProperty('--bg-color-light', '#1e1e1e');
+                document.documentElement.style.setProperty('--bg-color-lighter', '#2d2d2d');
+                document.documentElement.style.setProperty('--text-color', '#f5f5f5');
+                document.documentElement.style.setProperty('--text-color-muted', '#aaaaaa');
+                toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+            isDarkMode = !isDarkMode;
+        });
+    };
+    
+    createDarkModeToggle();
 }); 
