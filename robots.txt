@@ -1,6 +1,4 @@
-# Allow all web crawlers to access all content
 User-agent: *
 Allow: /
 
-# Sitemap location
-Sitemap: https://yourdomain.com/sitemap.xml 
+Sitemap: https://krafties.co/sitemap.xml
