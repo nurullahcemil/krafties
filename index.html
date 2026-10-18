@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,700..900&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/site.css?v=7">
+  <link rel="stylesheet" href="assets/site.css?v=8">
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://krafties.co/#organization", "name": "Krafties", "url": "https://krafties.co/", "logo": "https://krafties.co/favicon.svg", "description": "An independent studio building small, honest websites and apps: The Hype Gap, The Fee Gap, Local Hawaii Events, Local NYC Events, Roasterland, Daily Etymology and Nightfall.", "email": "nur@roasterland.com", "foundingDate": "2026", "founder": {"@type": "Person", "@id": "https://krafties.co/#founder", "name": "Nurullah Gökdoğan", "jobTitle": "Founder", "sameAs": ["https://nur.design", "https://www.linkedin.com/in/typeandcoffee/"], "worksFor": {"@id": "https://krafties.co/#organization"}, "url": "https://nur.design"}, "brand": [{"@type": "Brand", "name": "The Hype Gap", "url": "https://www.thehypegap.com"}, {"@type": "Brand", "name": "The Fee Gap", "url": "https://www.thefeegap.com"}, {"@type": "Brand", "name": "Local Hawaii Events", "url": "https://localhawaiievents.com"}, {"@type": "Brand", "name": "Local NYC Events", "url": "https://localnycevents.com"}, {"@type": "Brand", "name": "Roasterland", "url": "https://roasterland.com"}, {"@type": "Brand", "name": "Daily Etymology", "url": "https://apps.apple.com/us/app/daily-etymology/id6767966483"}, {"@type": "Brand", "name": "Nightfall", "description": "A dark sky finder app. Coming soon."}]}, {"@type": "WebSite", "@id": "https://krafties.co/#website", "url": "https://krafties.co/", "name": "Krafties", "publisher": {"@id": "https://krafties.co/#organization"}}]}</script>
 </head>
 <body>
@@ -36,7 +36,7 @@
       <h1><span>Honest</span><span>products.</span></h1>
       <div class="hero-foot">
         <p>We build small sites and apps that answer one question well: is it worth it, is it legit, what’s on near you, which coffee, where a word comes from.</p>
-        <span class="mono muted">(07) PRODUCTS · 5 LIVE</span>
+        <span class="mono muted" id="live-count">(07) PRODUCTS · 5 LIVE</span>
       </div>
     </section>
 
@@ -70,11 +70,12 @@
             <span class="reel-inline">Classes, free culture and volunteer days across New York’s five boroughs.<span class="mono">localnycevents.com · Live</span></span>
           </a>
         </li>
-        <li class="reel-row" data-id="roast" data-name="Roasterland" data-cat="Taste" data-url="https://roasterland.com" data-where="roasterland.com" data-bg="#7A4A2E" data-ink="#F6E9DC" data-rule="rgba(246,233,220,.35)" data-icon="M12 3c4 0 7 4 7 9s-3 9-7 9-7-4-7-9 3-9 7-9zM12 3c-2 3-2 6 0 9s2 6 0 9" data-line="Coffee from small US roasters, chosen by origin, with rare regions first." data-status="Coming soon">
+        <li class="reel-row" data-id="roast" data-name="Roasterland" data-cat="Taste" data-url="https://roasterland.com" data-where="roasterland.com" data-bg="#7A4A2E" data-ink="#F6E9DC" data-rule="rgba(246,233,220,.35)" data-icon="M12 3c4 0 7 4 7 9s-3 9-7 9-7-4-7-9 3-9 7-9zM12 3c-2 3-2 6 0 9s2 6 0 9" data-line="Coffee from small US roasters, chosen by origin, with rare regions first." data-status="Coming soon" data-launch="2026-11-01T14:00:00Z" data-launch-label="Nov 1, 6 AM PT">
           <a class="reel-link" href="https://roasterland.com" rel="noopener">
             <span class="reel-no mono">05</span>
             <span class="reel-name">Roasterland</span>
-            <span class="reel-inline">Coffee from small US roasters, chosen by origin, with rare regions first.<span class="mono">roasterland.com · Coming soon</span></span>
+            <span class="reel-timer mono" aria-hidden="true"></span>
+            <span class="reel-inline">Coffee from small US roasters, chosen by origin, with rare regions first.<span class="mono">roasterland.com · <span class="reel-when">Launches Nov 1, 6 AM PT</span></span></span>
           </a>
         </li>
         <li class="reel-row" data-id="ety" data-name="Daily Etymology" data-cat="Words" data-url="https://apps.apple.com/us/app/daily-etymology/id6767966483" data-where="App Store" data-bg="#8A7BE0" data-ink="#140F33" data-rule="rgba(20,15,51,.3)" data-icon="M5 8h5v4c0 3-2 5-5 6M14 8h5v4c0 3-2 5-5 6" data-line="One word’s origin a day on your iPhone, with practice and notes to make it stick." data-status="Live">
@@ -84,11 +85,12 @@
             <span class="reel-inline">One word’s origin a day on your iPhone, with practice and notes to make it stick.<span class="mono">App Store · Live</span></span>
           </a>
         </li>
-        <li class="reel-row" data-id="night" data-name="Nightfall" data-cat="Outdoors" data-url="" data-where="App" data-bg="#141B3A" data-ink="#E8ECFF" data-rule="rgba(232,236,255,.3)" data-icon="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5zM17 3v4M15 5h4" data-line="A dark sky finder: where to go, and when, to actually see the stars." data-status="Coming soon">
+        <li class="reel-row" data-id="night" data-name="Nightfall" data-cat="Outdoors" data-url="" data-where="App" data-bg="#141B3A" data-ink="#E8ECFF" data-rule="rgba(232,236,255,.3)" data-icon="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5zM17 3v4M15 5h4" data-line="A dark sky finder: where to go, and when, to actually see the stars." data-status="Coming soon" data-launch="2026-10-25T13:00:00Z" data-launch-label="Oct 25, 6 AM PT">
           <button class="reel-link" type="button">
             <span class="reel-no mono">07</span>
             <span class="reel-name">Nightfall</span>
-            <span class="reel-inline">A dark sky finder: where to go, and when, to actually see the stars.<span class="mono">App · Coming soon</span></span>
+            <span class="reel-timer mono" aria-hidden="true"></span>
+            <span class="reel-inline">A dark sky finder: where to go, and when, to actually see the stars.<span class="mono">App · <span class="reel-when">Launches Oct 25, 6 AM PT</span></span></span>
           </button>
         </li>
       </ul>
@@ -128,6 +130,6 @@
       </div>
     </footer>
   </div>
-  <script src="assets/site.js?v=6" defer></script>
+  <script src="assets/site.js?v=7" defer></script>
 </body>
 </html>

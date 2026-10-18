@@ -46,6 +46,11 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-o
 .reel-link { display: flex; align-items: baseline; gap: 22px; padding: 14px 0; text-decoration: none; cursor: pointer; }
 /* Coming-soon products with no URL render as a button: strip native button chrome so it matches the link rows. */
 button.reel-link { width: 100%; background: none; border: 0; margin: 0; font: inherit; color: inherit; text-align: left; -webkit-appearance: none; appearance: none; }
+/* Launch countdown on coming-soon rows; filled by site.js, hidden once empty. */
+.reel-timer { margin-left: auto; align-self: center; white-space: nowrap; color: var(--mute); font-variant-numeric: tabular-nums; letter-spacing: .04em; transition: color .3s; }
+.reel-timer:empty { display: none; }
+.reel-timer::before { content: "\25CF"; margin-right: 8px; color: #e8b04a; animation: blink 1.6s steps(1) infinite; }
+.reel-row.on .reel-timer, .reel-link:hover .reel-timer { color: var(--ink); }
 .reel-no { min-width: 30px; color: var(--ghost); transition: color .3s; }
 .reel-name { font-family: var(--display); font-weight: 800; font-stretch: 90%; white-space: nowrap; font-size: clamp(30px, 5vw, 72px); line-height: 1.02; letter-spacing: -0.04em; text-transform: uppercase; color: transparent; -webkit-text-stroke: 1px var(--ghost); transition: color .3s, -webkit-text-stroke-color .3s, letter-spacing .4s; }
 .reel-row.on .reel-name, .reel-link:hover .reel-name, .reel-link:focus-visible .reel-name { color: var(--ink); -webkit-text-stroke-color: var(--ink); }
@@ -153,6 +158,7 @@ button.reel-link { width: 100%; background: none; border: 0; margin: 0; font: in
   .reel-link { flex-wrap: wrap; row-gap: 6px; }
   .reel-inline { display: block; width: 100%; padding-left: 52px; color: var(--ink-2); font-size: 16px; }
   .reel-inline .mono { display: block; margin-top: 4px; color: var(--mute); }
+  .reel-timer { margin-left: 0; width: 100%; padding-left: 52px; color: var(--ink); }
   .about-text { grid-column: auto; }
   .top nav { gap: 18px; }
 }
