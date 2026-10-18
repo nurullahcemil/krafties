@@ -1,113 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You | Krafties</title>
-    <link rel="stylesheet" href="css/modern-styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .thank-you-section {
-            text-align: center;
-            padding: var(--space-xxxl) 0;
-            min-height: 60vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-        
-        .thank-you-section h1 {
-            font-size: 3rem;
-            margin-bottom: var(--space-lg);
-            color: var(--primary-color);
-        }
-        
-        .thank-you-section p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto var(--space-xl);
-            color: var(--gray-700);
-        }
-        
-        .thank-you-section .icon {
-            font-size: 5rem;
-            color: var(--success-color);
-            margin-bottom: var(--space-xl);
-        }
-        
-        .return-btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: var(--space-md) var(--space-xl);
-            border-radius: var(--radius-pill);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: var(--shadow-md);
-        }
-        
-        .return-btn:hover {
-            background-color: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-            text-decoration: none;
-            color: white;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thank you · Krafties</title>
+  <meta name="description" content="Thanks for writing. We read every message and will get back to you soon.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#08080a">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,700..900&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/site.css?v=6">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>Krafties</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html#design-philosophy">Our Philosophy</a></li>
-                    <li><a href="index.html#apps">Apps</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
+  <div class="wrap">
+    <header class="top">
+      <a class="brand" href="/" aria-label="Krafties home">
+        <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#F2F0EA"/><path d="M14 10v20M27 10L17 20l10 10" fill="none" stroke="#08080A" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        KRAFTIES
+      </a>
+      <span class="mono muted">Independent product studio <span class="blink" aria-hidden="true">_</span></span>
+      <nav class="mono" aria-label="Main"><a href="/#index">INDEX</a><a href="/#principles">PRINCIPLES</a><a href="/#about">ABOUT</a><a href="/#contact">CONTACT</a></nav>
     </header>
 
-    <section class="thank-you-section">
-        <div class="container">
-            <div class="icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            <h1>Thank You!</h1>
-            <p>Your message has been sent successfully. We appreciate your interest and will get back to you as soon as possible.</p>
-            <a href="index.html" class="return-btn">Return to Homepage</a>
-        </div>
+    <section class="hero simple-hero">
+      <span class="mono muted">THANK YOU</span>
+      <h1><span>Message</span><span>sent.</span></h1>
+      <div class="hero-foot">
+        <p>Thanks for writing. We read every message and will get back to you soon.</p>
+        <a class="pill-cta mono" href="/">BACK TO THE INDEX ↗</a>
+      </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>&copy; 2024 Krafties. All rights reserved.</p>
-                <div class="footer-links">
-                    <a href="privacy-policy.html">Privacy Policy</a>
-                    <a href="terms-of-service.html">Terms of Service</a>
-                </div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-        </div>
+    <footer class="foot" id="contact">
+      <a class="foot-cta" href="mailto:nur@roasterland.com">Let’s talk ↗</a>
+      <div class="foot-row mono muted">
+        <span>© 2026 KRAFTIES.CO</span>
+        <a href="mailto:nur@roasterland.com">nur@roasterland.com</a>
+        <a href="https://nur.design" rel="noopener">NUR.DESIGN</a>
+        <a href="https://www.linkedin.com/in/typeandcoffee/" rel="noopener">LINKEDIN</a>
+        <a href="/privacy-policy.html">PRIVACY</a>
+        <a href="/terms-of-service.html">TERMS</a>
+      </div>
     </footer>
-
-    <script>
-        // Update copyright year
-        document.addEventListener('DOMContentLoaded', function() {
-            const copyrightYear = document.querySelector('footer p');
-            if (copyrightYear) {
-                const year = new Date().getFullYear();
-                copyrightYear.textContent = copyrightYear.textContent.replace('2024', year);
-            }
-        });
-    </script>
+  </div>
 </body>
-</html> 
+</html>
