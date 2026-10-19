@@ -217,3 +217,17 @@ html.sheet-open { overflow: hidden; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .hero h1 span { opacity: 1; transform: none; }
 }
+
+/* the mark: four tiles fly in and lock, then two trade places every few seconds */
+.mark rect,.mark circle{transform-box:fill-box;transform-origin:center}
+.mark .t1{animation:markIn1 .6s .05s cubic-bezier(.2,.9,.3,1.3) both}
+.mark .t2{animation:markIn2 .6s .17s cubic-bezier(.2,.9,.3,1.3) both,markSwap2 6s 1.6s ease-in-out infinite}
+.mark .t3{animation:markIn3 .6s .29s cubic-bezier(.2,.9,.3,1.3) both,markSwap3 6s 1.6s ease-in-out infinite}
+.mark .t4{animation:markIn4 .7s .45s cubic-bezier(.2,.9,.3,1.6) both}
+@keyframes markIn1{from{opacity:0;transform:translate(-10px,-10px) rotate(-90deg)}to{opacity:1;transform:none}}
+@keyframes markIn2{from{opacity:0;transform:translate(10px,-10px) rotate(90deg)}to{opacity:1;transform:none}}
+@keyframes markIn3{from{opacity:0;transform:translate(-10px,10px) rotate(90deg)}to{opacity:1;transform:none}}
+@keyframes markIn4{from{opacity:0;transform:scale(0)}to{opacity:1;transform:none}}
+@keyframes markSwap2{0%,62%{transform:none}74%,88%{transform:translate(-19px,19px) rotate(-90deg)}100%{transform:rotate(-180deg)}}
+@keyframes markSwap3{0%,62%{transform:none}74%,88%{transform:translate(19px,-19px) rotate(90deg)}100%{transform:rotate(180deg)}}
+@media (prefers-reduced-motion: reduce){.mark *{animation:none!important}}
